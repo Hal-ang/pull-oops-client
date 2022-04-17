@@ -1,17 +1,12 @@
 import React from 'react';
+import {useCallback} from 'react';
 import useDocument from '../../hooks/useDocument';
 import {useMemo} from 'react';
 
-const userStepId = 3;
+const userStepId = 1;
 
 const StepHeader = React.memo(
-  ({
-    stepCounts,
-    isShowShadow,
-  }: {
-    stepCounts: number;
-    isShowShadow?: boolean;
-  }) => {
+  ({steps, isShowShadow}: {steps: number[]; isShowShadow?: boolean}) => {
     const {clientSize} = useDocument();
 
     const stepGuideLineInlineStyle = useMemo(
@@ -19,14 +14,25 @@ const StepHeader = React.memo(
       [clientSize.width],
     );
 
+    const getButtonStyleClassName = useCallback(
+      (id: number) => (userStepId >= id ? 'bg-[#4AA6C8]' : 'bg-[#C8C8C8]'),
+      [userStepId],
+    );
+
     return (
       <div id="main_header" className=" w-full flex">
         <div className="w-full relative pt-8 pb-5 bg-white z-10">
           <div className="px-4 justify-between flex items-center z-20">
-            {Array.from(Array(stepCounts)).map((_, index) => (
-              <div key={index} className="rounded-full bg-[#4AA6C8] p-0.5 flex">
+            {steps.map((id, index) => (
+              <div
+                key={index}
+                className={`rounded-full p-0.5 flex ${getButtonStyleClassName(
+                  id,
+                )}`}>
                 <div
-                  className="number inline-block bg-[#4AA6C8] text-white border-2 border-white text-center items-center rounded-lg w-4 h-4"
+                  className={`inline-block bg-[#4AA6C8] text-white border-2 border-white text-center items-center rounded-lg w-4 h-4 ${getButtonStyleClassName(
+                    index,
+                  )}`}
                   style={{
                     fontSize: 8,
                   }}>
@@ -41,7 +47,9 @@ const StepHeader = React.memo(
           <div
             style={{
               width:
-                (stepGuideLineInlineStyle.width / stepCounts) * userStepId + 1,
+                (stepGuideLineInlineStyle.width / steps.length) *
+                (userStepId + 1),
+              maxWidth: stepGuideLineInlineStyle.width,
               zIndex: -1,
             }}
             className="h-0.5 bg-[#4AA6C8] absolute top-10 left-4"></div>

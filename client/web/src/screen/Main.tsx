@@ -9,7 +9,7 @@ const Main = () => {
 
   return (
     <div className="h-screen w-full">
-      <StepHeader stepCounts={steps.length} isShowShadow />
+      <StepHeader steps={steps.map(step => step.id)} isShowShadow />
       <div className="w-full px-6 h-full overflow-y-scroll snap-y pt-10 pb-36">
         {steps.map((step, index) => (
           <StepCard key={index} step={step} />
