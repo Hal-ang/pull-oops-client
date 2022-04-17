@@ -1,4 +1,4 @@
-import './App.css';
+// import './App.css';
 
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
@@ -11,7 +11,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Main />}></Route>
+        <Route path="/" element={<Main />} />
         <Route path="splash" element={<Splash />} />
         <Route path="step/:stepId">
           <Route path="guide" element={<Guide />} />
