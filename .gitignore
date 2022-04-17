@@ -32,7 +32,10 @@ local.properties
 
 # node.js
 #
-node_modules/
+client/app/node_modules/
+client/web/node_modules/
+
+
 npm-debug.log
 yarn-error.log
 
@@ -59,3 +62,5 @@ buck-out/
 # Ruby / CocoaPods
 client/app/ios/Pods/
 /vendor/bundle/
+
+
