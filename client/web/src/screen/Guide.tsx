@@ -1,10 +1,47 @@
-import React from 'react';
-import {useParams} from 'react-router';
+import React, { useMemo } from 'react';
+
+import GrowBox from '../components/GrowBox';
+import { STEPS_DATA } from '../demo/main';
+import arrow from '../assets/bouncing-scroll-arrows.gif';
+import tempGif from '../assets/inverted-row.gif';
+import { useParams } from 'react-router';
 
 const Guide = () => {
-  const {stepId} = useParams();
+  const { stepId } = useParams();
 
-  return <div>{stepId}</div>;
+  const step = useMemo(() => {
+    const index = STEPS_DATA.data.Step.findIndex((sp) => sp.id);
+    return STEPS_DATA.data.Step[index];
+  }, [stepId]);
+
+  return (
+    <div className='w-screen h-screen relative'>
+      <img src={tempGif} className='object-cover w-full h-full' />
+      <div className='w-full h-full absolute top-0 bg-[#0A0A0A] bg-opacity-30' />
+      <div className='w-full h-full absolute top-0 z-10 flex flex-col  text-white'>
+        <GrowBox />
+        <div className='flex justify-between'>
+          <div className='pl-6 pb-6 '>
+            <div className='flex items-end'>
+              <div className='font-Roboto font-bold' style={{ fontSize: 40 }}>
+                {step.id + 1}
+              </div>
+              <div className='font-NotoSansKR font-regular text-xs pb-3 ml-3'>{`${
+                step.rep
+              }rep ${step.rest ? `${step.rest}res` : ''}${step.set}set`}</div>
+            </div>
+            <div className='font-NotoSansKR font-bold whitespace-pre text-3xl mt-1'>
+              {step.name}
+            </div>
+          </div>
+          <div className='flex flex-col'>
+            <GrowBox />
+            <img src={arrow} className='w-14 opacity-40 rotate-180 mb-4' />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Guide;
