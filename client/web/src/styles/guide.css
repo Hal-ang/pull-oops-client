@@ -1,0 +1,47 @@
+.guide-image-enter {
+  height : 100vh;
+}
+.guide-image-enter-active {
+  height : 40vh;
+  transition: all 2s;
+}
+
+.guide-image-enter-done {
+  height : 40vh;
+}
+.guide-image-exit {
+  height : 40vh;
+}
+.guide-image-exit-active {
+  height : 100vh;
+  transition: all 2s;
+}
+.guide-image-exit-done {
+  height : 100vh;
+}
+
+.hidden-absolute-enter {
+  opacity: 1;
+}
+.hidden-absolute-enter-active {
+  opacity: 0;
+  transition: all 2s;
+}
+
+.hidden-absolute-enter-done {
+  opacity: 0;
+  display: none;
+}
+
+.hidden-absolute-exit {
+  opacity: 0;
+}
+.hidden-absolute-exit-active {
+  opacity: 1;
+  display: absolute;
+  transition: all 2s;
+}
+.hidden-absolute-exit-done {
+  opacity: 1;
+}
+
