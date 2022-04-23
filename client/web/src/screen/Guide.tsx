@@ -2,6 +2,7 @@ import '../styles/guide.css';
 
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
+import Arrow from '../assets/left-arrow.png';
 import { CSSTransition } from 'react-transition-group';
 import GrowBox from '../components/GrowBox';
 import { STEPS_DATA } from '../demo/main';
@@ -12,6 +13,13 @@ import { useParams } from 'react-router';
 const Guide = () => {
   const { stepId } = useParams();
   const [isScroll, setIsScroll] = useState(false);
+
+  const descriptions = useMemo(() => {
+    if (stepId) {
+      return STEPS_DATA.data.Step[parseInt(stepId)].detail.split('\n');
+    }
+    return [];
+  }, [stepId]);
 
   const step = useMemo(() => {
     const index = STEPS_DATA.data.Step.findIndex((sp) => sp.id);
@@ -48,7 +56,16 @@ const Guide = () => {
   }, [window]);
 
   return (
-    <div className='w-screen h-screen relative bg-black'>
+    <div className='w-screen h-screen relative'>
+      {/* @ts-ignore */}
+      <CSSTransition in={isScroll} timeout={2000} classNames='guide-header'>
+        <button className='px-[21px]  py-3 hidden flex-row justify-start items-center'>
+          <img src={Arrow} className='w-4 h-4 rotate-180' />
+          <div className='font-NotoSansKR font-bold text-base ml-3'>
+            {step.name}
+          </div>
+        </button>
+      </CSSTransition>
       {/* @ts-ignore */}
       <CSSTransition in={isScroll} timeout={2000} classNames='guide-image'>
         <div id='initial-element' className='w-full h-full'>
@@ -106,7 +123,14 @@ const Guide = () => {
           </CSSTransition>
         </div>
       </CSSTransition>
-      <div className='text-white'>hihihihihi</div>
+      <div className='px-[21px] pt-[31px]'>
+        <div className='font-NotoSansKR font-bold sm:text-lg'>운동 방법</div>
+        <div className='mt-[21px] font-regular font-NotoSansKR text-sm'>
+          {descriptions.map((desc) => (
+            <div className='mt-[15px] whitespace-pre-line'>{desc}</div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

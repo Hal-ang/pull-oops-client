@@ -1,16 +1,30 @@
+.guide-header-enter {
+  opacity: 0;
+}
+
+.guide-header-enter-active {
+  display: flex;
+  opacity: 1;
+}
+
+.guide-header-enter-done {
+  display: flex;
+  opacity: 1;
+}
+
 .guide-image-enter {
   height : 100vh;
 }
 .guide-image-enter-active {
-  height : 40vh;
+  height : 300px;
   transition: all 2s;
 }
 
 .guide-image-enter-done {
-  height : 40vh;
+  height : 300px;
 }
 .guide-image-exit {
-  height : 40vh;
+  height : 300px;
 }
 .guide-image-exit-active {
   height : 100vh;
@@ -44,4 +58,5 @@
 .hidden-absolute-exit-done {
   opacity: 1;
 }
+
 
