@@ -2,10 +2,11 @@ import '../styles/guide.css';
 
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
-import Arrow from '../assets/left-arrow.png';
+import BasicHeader from '../components/main/BasicHeader';
 import { CSSTransition } from 'react-transition-group';
 import GrowBox from '../components/GrowBox';
 import { STEPS_DATA } from '../demo/main';
+import { animationTimeout } from '../util';
 import arrow from '../assets/bouncing-scroll-arrows.gif';
 import tempGif from '../assets/inverted-row.gif';
 import { useParams } from 'react-router';
@@ -57,17 +58,18 @@ const Guide = () => {
 
   return (
     <div className='w-screen h-screen relative'>
+      <BasicHeader
+        inProps={isScroll}
+        timeout={2000}
+        onClickBack={() => {}}
+        text={step.name}
+      />
       {/* @ts-ignore */}
-      <CSSTransition in={isScroll} timeout={2000} classNames='guide-header'>
-        <button className='px-[21px]  py-3 hidden flex-row justify-start items-center'>
-          <img src={Arrow} className='w-4 h-4 rotate-180' />
-          <div className='font-NotoSansKR font-bold text-base ml-3'>
-            {step.name}
-          </div>
-        </button>
-      </CSSTransition>
-      {/* @ts-ignore */}
-      <CSSTransition in={isScroll} timeout={2000} classNames='guide-image'>
+      <CSSTransition
+        in={isScroll}
+        timeout={animationTimeout}
+        classNames='guide-image'
+      >
         <div id='initial-element' className='w-full h-full'>
           <img
             src={tempGif}
@@ -87,7 +89,7 @@ const Guide = () => {
           {/* @ts-ignore */}
           <CSSTransition
             in={isScroll}
-            timeout={2000}
+            timeout={animationTimeout}
             classNames='hidden-absolute'
           >
             <div className='w-full h-full absolute top-0 z-10 flex flex-col  text-white'>
@@ -101,13 +103,13 @@ const Guide = () => {
                     >
                       {step.id + 1}
                     </div>
-                    <div className='font-NotoSansKR font-regular text-xs pb-3 ml-3'>{`${
+                    <div className='font-regular text-xs pb-3 ml-3'>{`${
                       step.rep
                     }rep ${step.rest ? `${step.rest}res` : ''}${
                       step.set
                     }set`}</div>
                   </div>
-                  <div className='font-NotoSansKR font-bold whitespace-pre text-3xl mt-1'>
+                  <div className='font-bold whitespace-pre text-3xl mt-1'>
                     {step.name}
                   </div>
                 </div>
@@ -124,10 +126,12 @@ const Guide = () => {
         </div>
       </CSSTransition>
       <div className='px-[21px] pt-[31px]'>
-        <div className='font-NotoSansKR font-bold sm:text-lg'>운동 방법</div>
-        <div className='mt-[21px] font-regular font-NotoSansKR text-sm'>
-          {descriptions.map((desc) => (
-            <div className='mt-[15px] whitespace-pre-line'>{desc}</div>
+        <div className='font-bold sm:text-lg'>운동 방법</div>
+        <div className='mt-[21px] font-regular text-sm'>
+          {descriptions.map((desc, index) => (
+            <div key={index} className='mt-[15px] whitespace-pre-line'>
+              {desc}
+            </div>
           ))}
         </div>
       </div>
