@@ -58,12 +58,7 @@ const Guide = () => {
 
   return (
     <div className='w-screen h-screen relative'>
-      <BasicHeader
-        inProps={isScroll}
-        timeout={2000}
-        onClickBack={() => {}}
-        text={step.name}
-      />
+      <BasicHeader inProps={isScroll} timeout={2000} text={step.name} />
       {/* @ts-ignore */}
       <CSSTransition
         in={isScroll}

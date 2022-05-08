@@ -23,7 +23,7 @@ const Diary = () => {
 
   return (
     <div className='w-full relative bg-white'>
-      <BasicHeader onClickBack={() => {}} />
+      <BasicHeader />
       <StepHeader steps={steps.map((step) => step.id)} />
       <div className='px-[21px] mt-7 text-white'>
         <Link
