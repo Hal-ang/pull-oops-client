@@ -133,7 +133,7 @@ const Guide = () => {
           timeout={animationTimeout}
           classNames='hidden-opacity'
         >
-          <div className='w-screen absolute bottom-0  px-[21px] pb-[31px] '>
+          <div className='w-screen absolute bottom-0  px-[21px] pb-[15px] '>
             <Link
               to={`/step/${stepId}/diary`}
               className='block bg-[#010B37] text-white text-xl text-center rounded-md py-[10px]'

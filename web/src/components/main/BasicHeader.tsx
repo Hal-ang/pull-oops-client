@@ -25,7 +25,7 @@ const BasicHeader = React.memo(
       () => (
         <Link
           to='/'
-          className={`w-full px-[21px] py-3 ${
+          className={`w-full px-[15px] py-4 ${
             isAnimation ? 'hidden' : 'block'
           } flex-row justify-start items-center`}
         >

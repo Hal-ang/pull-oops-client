@@ -43,7 +43,7 @@ const StepCard = ({ step }: { step: StepCardType }) => {
               <GrowBox />
               <div className='text-right text-3xl'>🎉</div>
               <div className='font-regular mt-4 text-xs'>{`${step.rep}rep ${
-                step.rest ? `${step.rest}res` : ''
+                step.rest ? `${step.rest}res ` : ''
               }${step.set}set`}</div>
             </div>
           </div>

@@ -5,7 +5,7 @@ export const STEPS_DATA = {
       {
         id: 0,
         name: '인버티드 로우',
-        subTitle: '(가슴 높이)',
+        subTitle: '가슴 높이',
         rep: 8,
         rest: 2,
         set: 3,
@@ -17,7 +17,7 @@ export const STEPS_DATA = {
       {
         id: 1,
         name: '인버티드 로우',
-        subTitle: '(바닥과 평행)',
+        subTitle: '바닥과 평행',
         rep: 8,
         rest: 2,
         set: 3,
@@ -29,7 +29,7 @@ export const STEPS_DATA = {
       {
         id: 2,
         name: '풀업 밴드',
-        subTitle: '(초록색)',
+        subTitle: '초록색',
         rep: 8,
         rest: 2,
         set: 3,
@@ -41,7 +41,7 @@ export const STEPS_DATA = {
       {
         id: 3,
         name: '풀업 밴드',
-        subTitle: '(보라색)',
+        subTitle: '보라색',
         rep: 8,
         rest: 2,
         set: 3,
