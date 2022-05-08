@@ -25,8 +25,8 @@ const BasicHeader = React.memo(
       () => (
         <Link
           to='/'
-          className={`w-full px-[21px] py-5 ${
-            isAnimation ? 'hidden' : 'flex'
+          className={`w-full px-[21px] py-3 ${
+            isAnimation ? 'hidden' : 'block'
           } flex-row justify-start items-center`}
         >
           <img src={Arrow} className='w-4 h-4 rotate-180' />
