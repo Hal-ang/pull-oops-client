@@ -34,29 +34,31 @@
   height : 100vh;
 }
 
-.hidden-absolute-enter {
+.hidden-opacity-enter {
+  opacity: 0;
+  display: none;
+}
+.hidden-opacity-enter-active {
+  opacity: 1;
+  transition: all 1s;
+  display: block;
+}
+
+.hidden-opacity-enter-done {
   opacity: 1;
 }
-.hidden-absolute-enter-active {
+
+.hidden-opacity-exit {
+  opacity: 1;
+}
+.hidden-opacity-exit-active {
   opacity: 0;
   transition: all 2s;
 }
-
-.hidden-absolute-enter-done {
+.hidden-opacity-exit-done {
   opacity: 0;
   display: none;
 }
 
-.hidden-absolute-exit {
-  opacity: 0;
-}
-.hidden-absolute-exit-active {
-  opacity: 1;
-  display: absolute;
-  transition: all 2s;
-}
-.hidden-absolute-exit-done {
-  opacity: 1;
-}
 
 
